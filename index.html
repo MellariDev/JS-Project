@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Outlook</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="weather.js" type="module"></script>
+</head>
+<body>
+    <header>
+        <h1 id="greeting"></h1>
+        <h2>It is currently</h2>
+        <h3 id="date"></h3>
+        <h3 id="time"></h3>
+    </header>
+    <main>
+        <!--Weather Component-->
+        <section class="weather">
+            <!--Search Bar-->
+            <!--<section id="searchBar" class="searchBar" >
+                <form id="searchBarForm" class="searchBarForm" role="search">
+                    <label for="searchBarText">Enter a Location</label>
+                    <input id="searchBarText" class="searchBarText" type="text" role="searchbox" size="40" autocomplete="off" placeholder="City, State, Country">
+                    <button id="searchBarButton" class="searchBarButton" title="Submit Location" aria-label="Enter Zip Code or City, State, and Country to retrieve weather conditions">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                    </button>
+                </form>
+            </section>-->
+            <!--Current Weather-->
+            <a href="#currentWeather" class="skipLink">Skip to current weather conditions</a>
+            <section class="currentWeather">
+                <h2 class="currentWeatherLocation" >Current Weather</h2>
+                <div class="currentWeatherConditions">
+
+                </div>
+            </section>
+            <!--Daily Forecast-->
+            <a href="#dailyForecast" class="skipLink">Skip to daily forecast</a>
+            <section class="dailyForecast">
+
+            </section>
+        </section>
+    </main>
+    <script>
+        //Greeting based on local time
+        document.getElementById("greeting").innerHTML = new Date().getHours() <= 12 ? "Good Morning" : (new Date().getHours() >= 18 ? "Good Evening" : "Good Afternoon");
+
+        const today = new Date();
+        document.getElementById("date").innerHTML = today.toLocaleDateString();
+        function getTime() {
+            const time = new Date();
+            const currentTime = time.toLocaleTimeString();
+            document.getElementById("time").innerHTML = currentTime;
+        }
+        setInterval(getTime,1)
+        
+    </script>
+</body>
+</html>
